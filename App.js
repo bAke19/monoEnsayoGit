@@ -12,6 +12,7 @@ export default class App extends React.Component{
       texto : '',
       displayText: '',
       chunks: ["th", "e"],
+      soundWord: []
     }
   }
   
@@ -38,7 +39,7 @@ export default class App extends React.Component{
             style={styles.goButton}
             onPress={() => {
               var word = this.state.text.toLowerCase().trim();
-              db[word] ? this.setState({ chunks: db[word].chunks }) : console.log("No existe esta palabra en la base de datos")
+              db[word] ? (this.setState({ chunks: db[word].chunks }), this.setState({ soundWord: db[word].chunks }) ) : console.log("No existe esta palabra en la base de datos")
             }}>
 
             <Text style={styles.buttonText}>GO</Text>
